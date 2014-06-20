@@ -1,0 +1,7 @@
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\bin\Release\RHClassLibrary.dll
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\bin\Release\RHClassLibrary.pdb
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\bin\Release\Model.dll
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\bin\Release\Model.pdb
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\obj\Release\RHClassLibrary.csprojResolveAssemblyReference.cache
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\obj\Release\RHClassLibrary.dll
+E:\GitHub\MyNewsAssistant\NewsGrabEngine\RHClassLibrary\obj\Release\RHClassLibrary.pdb

@@ -1,0 +1,11 @@
+E:\example\TlsClient\TlsClient\bin\Debug\TlsClient.exe.config
+E:\example\TlsClient\TlsClient\bin\Debug\TlsClient.exe
+E:\example\TlsClient\TlsClient\bin\Debug\TlsClient.pdb
+E:\example\TlsClient\TlsClient\obj\Debug\TlsClient.csprojResolveAssemblyReference.cache
+E:\example\TlsClient\TlsClient\obj\Debug\TlsClient.exe
+E:\example\TlsClient\TlsClient\obj\Debug\TlsClient.pdb
+E:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.exe.config
+E:\GitHub\TlsClient\TlsClient\TlsClient\obj\Debug\TlsClient.exe
+E:\GitHub\TlsClient\TlsClient\TlsClient\obj\Debug\TlsClient.pdb
+E:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.exe
+E:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.pdb
