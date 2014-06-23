@@ -8,22 +8,22 @@ namespace TlsClient.Model.ProtocolModel
 {
     public class Base
     {
-        private string _contentType;
-        public string ContentType
+        private byte _contentType;
+        public byte ContentType
         {
             get { return _contentType; }
             set { _contentType = value; }
         }
 
-        private string _version;
-        public string Version
+        private byte[] _version = new byte[2];
+        public byte[] Version
         {
             get { return _version; }
             set { _version = value; }
         }
 
-        private string _length;
-        public string Length
+        private byte[] _length = new byte[2];
+        public byte[] Length
         {
             get { return _length; }
             set { _length = value; }

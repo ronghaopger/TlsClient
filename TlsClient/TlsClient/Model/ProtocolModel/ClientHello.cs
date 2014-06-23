@@ -9,15 +9,15 @@ namespace TlsClient.Model.ProtocolModel
 {
     public class ClientHello : Handshake
     {
-        private string _gmt_unix_time;
-        public string Gmt_unix_time
+        private byte[] _gmt_unix_time = new byte[4];
+        public byte[] Gmt_unix_time
         {
             get { return _gmt_unix_time; }
             set { _gmt_unix_time = value; }
         }
 
-        private string _random_bytes;
-        public string Random_bytes
+        private byte[] _random_bytes = new byte[28];
+        public byte[] Random_bytes
         {
             get { return _random_bytes; }
             set { _random_bytes = value; }

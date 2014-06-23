@@ -9,7 +9,10 @@ namespace TlsClient.Model
 {
     public class C_To_S_One
     {
-        public Base Base { get; set; }
-        public ClientHello ClientHello { get; set; }
+        private Base _base = new Base();
+        public Base Base { get { return _base; } }
+
+        private ClientHello _clientHello = new ClientHello();
+        public ClientHello ClientHello { get { return _clientHello; } }
     }
 }
