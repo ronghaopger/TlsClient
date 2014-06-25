@@ -8,22 +8,22 @@ namespace TlsClient.Model.ProtocolModel.ClientHelloExtension
 {
     public class SessionTicketTLS
     {
-        private string _type;
-        public string Type
+        private byte[] _type = new byte[2];
+        public byte[] Type
         {
             get { return _type; }
             set { _type = value; }
         }
 
-        private string _length;
-        public string Length
+        private byte[] _length = new byte[2];
+        public byte[] Length
         {
             get { return _length; }
             set { _length = value; }
         }
 
-        private string _data;
-        public string Data
+        private byte _data;
+        public byte Data
         {
             get { return _data; }
             set { _data = value; }

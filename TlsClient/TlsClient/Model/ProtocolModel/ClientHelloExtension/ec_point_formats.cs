@@ -8,32 +8,32 @@ namespace TlsClient.Model.ProtocolModel.ClientHelloExtension
 {
     public class ec_point_formats
     {
-        private string _type;
-        public string Type
+        private byte[] _type = new byte[2];
+        public byte[] Type
         {
             get { return _type; }
             set { _type = value; }
         }
 
-        private string _length;
-        public string Length
+        private byte[] _length = new byte[2];
+        public byte[] Length
         {
             get { return _length; }
             set { _length = value; }
         }
 
-        private string _eCpointformatsLength;
-        public string ECpointformatsLength
+        private byte _eCpointformatsLength;
+        public byte ECpointformatsLength
         {
             get { return _eCpointformatsLength; }
             set { _eCpointformatsLength = value; }
         }
 
-        private List<string> _ellipticcurvespointformats;
-        public List<string> Ellipticcurvespointformats
+        private byte _eCpointformat;
+        public byte ECpointformat
         {
-            get { return _ellipticcurvespointformats; }
-            set { _ellipticcurvespointformats = value; }
+            get { return _eCpointformat; }
+            set { _eCpointformat = value; }
         }
     }
 }

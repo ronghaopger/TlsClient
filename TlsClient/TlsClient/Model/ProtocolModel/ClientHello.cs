@@ -23,63 +23,63 @@ namespace TlsClient.Model.ProtocolModel
             set { _random_bytes = value; }
         }
 
-        private string _sessionIDLength;
-        public string SessionIDLength
+        private byte _sessionIDLength;
+        public byte SessionIDLength
         {
             get { return _sessionIDLength; }
             set { _sessionIDLength = value; }
         }
 
-        private string _cipherSuitesLength;
-        public string CipherSuitesLength
+        private byte[] _cipherSuitesLength = new byte[2];
+        public byte[] CipherSuitesLength
         {
             get { return _cipherSuitesLength; }
             set { _cipherSuitesLength = value; }
         }
 
-        private List<string> _cipherSuites;
-        public List<string> CipherSuites
+        private byte[] _cipherSuites = new byte[2];
+        public byte[] CipherSuites
         {
             get { return _cipherSuites; }
             set { _cipherSuites = value; }
         }
 
-        private string _compressionMethodsLength;
-        public string CompressionMethodsLength
+        private byte _compressionMethodsLength;
+        public byte CompressionMethodsLength
         {
             get { return _compressionMethodsLength; }
             set { _compressionMethodsLength = value; }
         }
 
-        private List<string> _compressionMethods;
-        public List<string> CompressionMethods 
+        private byte _compressionMethods;
+        public byte CompressionMethods 
         {
             get { return _compressionMethods; }
             set { _compressionMethods = value; }
         }
 
-        private string _extensionsLength;
-        public string ExtensionsLength
+        private byte[] _extensionsLength = new byte[2];
+        public byte[] ExtensionsLength
         {
             get { return _extensionsLength; }
             set { _extensionsLength = value; }
         }
 
-        private renegotiation_info _renegotiation_info;
+        private renegotiation_info _renegotiation_info = new renegotiation_info();
         public renegotiation_info Renegotiation_info
         {
             get { return _renegotiation_info; }
             set { _renegotiation_info = value; }
         }
 
-        private elliptic_curves _elliptic_curves;
+        private elliptic_curves _elliptic_curves = new elliptic_curves();
         public elliptic_curves Elliptic_curves
         {
             get { return _elliptic_curves; }
             set { _elliptic_curves = value; }
         }
 
-        private ec_point_formats _ec_point_formats;
+        private ec_point_formats _ec_point_formats = new ec_point_formats();
         public ec_point_formats Ec_point_formats
         {
             get { return _ec_point_formats; }
@@ -87,7 +87,7 @@ namespace TlsClient.Model.ProtocolModel
         }
 
 
-        private SessionTicketTLS _sessionTicketTLS;
+        private SessionTicketTLS _sessionTicketTLS = new SessionTicketTLS();
         public SessionTicketTLS SessionTicketTLS
         {
             get { return _sessionTicketTLS; }

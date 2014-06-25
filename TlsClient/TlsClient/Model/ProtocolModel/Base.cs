@@ -22,7 +22,7 @@ namespace TlsClient.Model.ProtocolModel
             set { _version = value; }
         }
 
-        private byte[] _length = new byte[2];
+        private byte[]  _length = new byte[2];
         public byte[] Length
         {
             get { return _length; }

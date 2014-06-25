@@ -8,22 +8,22 @@ namespace TlsClient.Model.ProtocolModel.ClientHelloExtension
 {
     public class renegotiation_info
     {
-        private string _type;
-        public string Type
+        private byte[] _type = new byte[2];
+        public byte[] Type
         {
             get { return _type; }
             set { _type = value; }
         }
 
-        private string _length;
-        public string Length
+        private byte[] _length = new byte[2];
+        public byte[] Length
         {
             get { return _length; }
             set { _length = value; }
         }
 
-        private string _renegotiationinfoextensionlength;
-        public string Renegotiationinfoextensionlength
+        private byte _renegotiationinfoextensionlength;
+        public byte Renegotiationinfoextensionlength
         {
             get { return _renegotiationinfoextensionlength; }
             set { _renegotiationinfoextensionlength = value; }
