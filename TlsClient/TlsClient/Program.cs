@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TlsClient.Manager;
 using TlsClient.Model;
 
 namespace TlsClient
@@ -13,133 +14,15 @@ namespace TlsClient
     {
         static void Main(string[] args)
         {
-            MemoryStream stream = new MemoryStream(); 
-
-            //构造Client第一次请求的数据包
-            C_To_S_One csOne = new C_To_S_One();
-            csOne.Base.ContentType = 22;
-            csOne.Base.Version[0] = 3;
-            csOne.Base.Version[1] = 1;
-            csOne.Base.Length[0] = 0;
-            csOne.Base.Length[1] = 72;
-            csOne.ClientHello.HandshakeType = 1;
-            csOne.ClientHello.Length[0] = 0;
-            csOne.ClientHello.Length[1] = 0;
-            csOne.ClientHello.Length[2] = 68;
-            csOne.ClientHello.Version[0] = 3;
-            csOne.ClientHello.Version[1] = 1;
-            long seconds = (long)DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-            csOne.ClientHello.Gmt_unix_time[3] = (byte)(seconds & 0xFF);
-            csOne.ClientHello.Gmt_unix_time[2] = (byte)(seconds >> 8 & 0xFF);
-            csOne.ClientHello.Gmt_unix_time[1] = (byte)(seconds >> 16 & 0xFF);
-            csOne.ClientHello.Gmt_unix_time[0] = (byte)(seconds >> 24 & 0xFF);
-            Random random = new Random();
-            random.NextBytes(csOne.ClientHello.Random_bytes);
-            csOne.ClientHello.SessionIDLength = 0;
-            csOne.ClientHello.CipherSuitesLength[0] = 0;
-            csOne.ClientHello.CipherSuitesLength[1] = 2;
-            csOne.ClientHello.CipherSuites[0] = 0;
-            csOne.ClientHello.CipherSuites[1] = 47;
-            csOne.ClientHello.CompressionMethodsLength = 1;
-            csOne.ClientHello.CompressionMethods = 0;
-            csOne.ClientHello.ExtensionsLength[0] = 0;
-            csOne.ClientHello.ExtensionsLength[1] = 25;
-            csOne.ClientHello.Renegotiation_info.Type[0] = 255;
-            csOne.ClientHello.Renegotiation_info.Type[1] = 1;
-            csOne.ClientHello.Renegotiation_info.Length[0] = 0;
-            csOne.ClientHello.Renegotiation_info.Length[1] = 1;
-            csOne.ClientHello.Renegotiation_info.Renegotiationinfoextensionlength = 0;
-            csOne.ClientHello.Elliptic_curves.Type[0] = 0;
-            csOne.ClientHello.Elliptic_curves.Type[1] = 10;
-            csOne.ClientHello.Elliptic_curves.Length[0] = 0;
-            csOne.ClientHello.Elliptic_curves.Length[1] = 6;
-            csOne.ClientHello.Elliptic_curves.EllipticCurvesLength[0] = 0;
-            csOne.ClientHello.Elliptic_curves.EllipticCurvesLength[1] = 4;
-            csOne.ClientHello.Elliptic_curves.Ellipticcurves[0] = 0;
-            csOne.ClientHello.Elliptic_curves.Ellipticcurves[1] = 23;
-            csOne.ClientHello.Elliptic_curves.Ellipticcurves[2] = 0;
-            csOne.ClientHello.Elliptic_curves.Ellipticcurves[3] = 24;
-            csOne.ClientHello.Ec_point_formats.Type[0] = 0;
-            csOne.ClientHello.Ec_point_formats.Type[1] = 11;
-            csOne.ClientHello.Ec_point_formats.Length[0] = 0;
-            csOne.ClientHello.Ec_point_formats.Length[1] = 2;
-            csOne.ClientHello.Ec_point_formats.ECpointformatsLength = 1;
-            csOne.ClientHello.Ec_point_formats.ECpointformat = 0;
-            csOne.ClientHello.SessionTicketTLS.Type[0] = 0;
-            csOne.ClientHello.SessionTicketTLS.Type[1] = 35;
-            csOne.ClientHello.SessionTicketTLS.Length[0] = 0;
-            csOne.ClientHello.SessionTicketTLS.Length[1] = 0;
-
-            stream.WriteByte(csOne.Base.ContentType);
-            stream.Write(csOne.Base.Version, 0, 2);
-            stream.Write(csOne.Base.Length, 0, 2);
-            stream.WriteByte(csOne.ClientHello.HandshakeType);
-            stream.Write(csOne.ClientHello.Length, 0, 3);
-            stream.Write(csOne.ClientHello.Version, 0, 2);
-            stream.Write(csOne.ClientHello.Gmt_unix_time, 0, 4);
-            stream.Write(csOne.ClientHello.Random_bytes, 0, 28);
-            stream.WriteByte(csOne.ClientHello.SessionIDLength);
-            stream.Write(csOne.ClientHello.CipherSuitesLength, 0, 2);
-            stream.Write(csOne.ClientHello.CipherSuites, 0, 2);
-            stream.WriteByte(csOne.ClientHello.CompressionMethodsLength);
-            stream.WriteByte(csOne.ClientHello.CompressionMethods);
-            stream.Write(csOne.ClientHello.ExtensionsLength, 0, 2);
-            stream.Write(csOne.ClientHello.Renegotiation_info.Type, 0, 2);
-            stream.Write(csOne.ClientHello.Renegotiation_info.Length, 0, 2);
-            stream.WriteByte(csOne.ClientHello.Renegotiation_info.Renegotiationinfoextensionlength);
-            stream.Write(csOne.ClientHello.Elliptic_curves.Type, 0, 2);
-            stream.Write(csOne.ClientHello.Elliptic_curves.Length, 0, 2);
-            stream.Write(csOne.ClientHello.Elliptic_curves.EllipticCurvesLength, 0, 2);
-            stream.Write(csOne.ClientHello.Elliptic_curves.Ellipticcurves, 0, 4);
-            stream.Write(csOne.ClientHello.Ec_point_formats.Type, 0, 2);
-            stream.Write(csOne.ClientHello.Ec_point_formats.Length, 0, 2);
-            stream.WriteByte(csOne.ClientHello.Ec_point_formats.ECpointformatsLength);
-            stream.WriteByte(csOne.ClientHello.Ec_point_formats.ECpointformat);
-            stream.Write(csOne.ClientHello.SessionTicketTLS.Type, 0, 2);
-            stream.Write(csOne.ClientHello.SessionTicketTLS.Length, 0, 2);
-            stream.Flush();
-
+            IManager manager = new C_To_S_OneManager();
+            manager.InitPackage();
+            MemoryStream stream = manager.InitStream();
+            
             string serverAddr = "221.176.31.177";
             int portNum = 443;
             TcpClient client = new TcpClient(serverAddr, portNum);
             client.GetStream().Write(stream.ToArray(), 0, stream.ToArray().Length);
             Console.ReadKey();
-
-            // add a newline to the text to send
-            //string sendData = "160301006701000063030152dcf458b5e71729b669ef75b11c5fec7e8433cd51454e5116bbca8a58b58332000018002f00350005000ac013c014c009c00a003200380013000401000022ff01000100000500050100000000000a0006000400170018000b0002010000230000";
-            //byte[] byteData = new byte[sendData.Length / 2];
-            //int[] hexDigits = new int[128];
-            //for (int i = '0'; i <= '9'; i++)
-            //{
-            //    hexDigits[i] = i - '0';
-            //}
-            //for (int i = 'a'; i <= 'f'; i++)
-            //{
-            //    hexDigits[i] = i - 'a' + 10;
-            //}
-
-            //for (int i = 0; i < sendData.Length; i += 2)
-            //{
-            //    int c1 = hexDigits[sendData[i]];
-            //    int c2 = hexDigits[sendData[i + 1]];
-            //    byteData[i / 2] = (byte)((c1 << 4) | c2);
-            //}
-            //DataWriter writer = new DataWriter(clientSocket.OutputStream);
-            //writer.WriteBytes(byteData);
-            //// Call StoreAsync method to store the data to a backing stream
-            //await writer.StoreAsync();
-            //// detach the stream and close it
-            //writer.DetachStream();
-            //writer.Dispose();
-
-            //DataReader reader = new DataReader(clientSocket.InputStream);
-            //reader.InputStreamOptions = InputStreamOptions.Partial;
-            //var count = await reader.LoadAsync(255);
-            //if (count > 0)
-            //{
-            //    byte[] serverHello = new byte[255];
-            //    reader.ReadBytes(serverHello);
-            //}
         }
     }
 }

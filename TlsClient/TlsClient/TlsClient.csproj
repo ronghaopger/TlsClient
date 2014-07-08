@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\C_To_S_OneManager.cs" />
+    <Compile Include="Manager\IManager.cs" />
     <Compile Include="Model\C_To_S_One.cs" />
     <Compile Include="Model\ProtocolModel\Base.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\ec_point_formats.cs" />
