@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TlsClient.Manager
 {
-    interface IManager
+    interface IRequestManager
     {
         void InitPackage();
 

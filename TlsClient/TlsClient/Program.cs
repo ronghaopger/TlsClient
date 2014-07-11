@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RHClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,14 +15,35 @@ namespace TlsClient
     {
         static void Main(string[] args)
         {
-            IManager manager = new C_To_S_OneManager();
-            manager.InitPackage();
-            MemoryStream stream = manager.InitStream();
+            IRequestManager requestManager = new C_To_S_OneManager();
+            requestManager.InitPackage();
+            MemoryStream writeStream = requestManager.InitStream();
             
             string serverAddr = "221.176.31.177";
             int portNum = 443;
             TcpClient client = new TcpClient(serverAddr, portNum);
-            client.GetStream().Write(stream.ToArray(), 0, stream.ToArray().Length);
+            NetworkStream stream = client.GetStream();
+            stream.Write(writeStream.ToArray(), 0, writeStream.ToArray().Length);
+
+            MemoryStream contentStream = new MemoryStream();
+            stream.ReadTimeout = 3 * 1000;
+            byte[] readContent;
+            int readLength = 0;
+            do
+            {
+                readContent = new byte[1024];
+                readLength = stream.Read(readContent, 0, readContent.Length);
+                contentStream.Write(readContent, 0, readLength);
+                contentStream.Seek(readLength,SeekOrigin.Current);
+            }
+            while (readLength == readContent.Length);
+            byte[] s_cOneArray = contentStream.ToArray();
+
+            S_To_C_OneManager receiveManager = new S_To_C_OneManager();
+            receiveManager.AnalysePackage(s_cOneArray);
+
+            ///http://tools.ietf.org/html/rfc5246#section-7.4.7
+            ///http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html
             Console.ReadKey();
         }
     }

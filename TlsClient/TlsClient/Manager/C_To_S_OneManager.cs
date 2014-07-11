@@ -8,7 +8,7 @@ using TlsClient.Model;
 
 namespace TlsClient.Manager
 {
-    public class C_To_S_OneManager : IManager
+    public class C_To_S_OneManager : IRequestManager
     {
         private C_To_S_One csOne;
         public C_To_S_OneManager()
@@ -105,7 +105,6 @@ namespace TlsClient.Manager
             stream.WriteByte(csOne.ClientHello.Ec_point_formats.ECpointformat);
             stream.Write(csOne.ClientHello.SessionTicketTLS.Type, 0, 2);
             stream.Write(csOne.ClientHello.SessionTicketTLS.Length, 0, 2);
-            stream.Flush();
             return stream;
         }
     }

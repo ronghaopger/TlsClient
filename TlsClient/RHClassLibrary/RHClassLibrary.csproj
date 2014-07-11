@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converts.cs" />
     <Compile Include="JinZhiHelper.cs" />
     <Compile Include="MyXmlHelper.cs">
       <SubType>Code</SubType>

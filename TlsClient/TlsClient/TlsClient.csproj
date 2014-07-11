@@ -43,12 +43,16 @@
   <ItemGroup>
     <Compile Include="Manager\C_To_S_OneManager.cs" />
     <Compile Include="Manager\IManager.cs" />
+    <Compile Include="Manager\S_To_C_OneManager.cs" />
     <Compile Include="Model\C_To_S_One.cs" />
     <Compile Include="Model\ProtocolModel\Base.cs" />
+    <Compile Include="Model\ProtocolModel\Certificates.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\ec_point_formats.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\elliptic_curves.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\renegotiation_info.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\SessionTicketTLS.cs" />
+    <Compile Include="Model\ProtocolModel\ServerHello.cs" />
+    <Compile Include="Model\S_To_C_One.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\ProtocolModel\ClientHello.cs" />
@@ -56,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RHClassLibrary\RHClassLibrary.csproj">
+      <Project>{bab314f5-7735-4e0f-a90d-8d9fa6fc54f3}</Project>
+      <Name>RHClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
