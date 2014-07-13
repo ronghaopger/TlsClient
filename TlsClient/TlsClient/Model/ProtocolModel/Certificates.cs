@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace TlsClient.Model.ProtocolModel
 {
-    public class Certificates
+    public class Certificate
     {
-        private byte[] _subjectPublicKey = new byte[1412];
+        private byte[] _certificates = new byte[1412];
+        public byte[] Certificates
+        {
+            get { return _certificates; }
+            set { _certificates = value; }
+        }
+
+        //private byte[] _subjectPublicKey = new byte[140];
         public byte[] SubjectPublicKey
         {
-            get { return _subjectPublicKey; }
-            set { _subjectPublicKey = value; }
+            get;
+            set;
         }
     }
 }

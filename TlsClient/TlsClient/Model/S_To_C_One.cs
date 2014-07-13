@@ -14,5 +14,8 @@ namespace TlsClient.Model
 
         private ServerHello _serverHello = new ServerHello();
         public ServerHello ServerHello { get { return _serverHello; } }
+
+        private Certificate _certificate = new Certificate();
+        public Certificate Certificate { get { return _certificate; } }
     }
 }

@@ -18,12 +18,13 @@ namespace TlsClient
             IRequestManager requestManager = new C_To_S_OneManager();
             requestManager.InitPackage();
             MemoryStream writeStream = requestManager.InitStream();
+            byte[] c_sOneArray = writeStream.ToArray();
             
             string serverAddr = "221.176.31.177";
             int portNum = 443;
             TcpClient client = new TcpClient(serverAddr, portNum);
             NetworkStream stream = client.GetStream();
-            stream.Write(writeStream.ToArray(), 0, writeStream.ToArray().Length);
+            stream.Write(c_sOneArray, 0, c_sOneArray.Length);
 
             MemoryStream contentStream = new MemoryStream();
             stream.ReadTimeout = 3 * 1000;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RHClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -23,10 +24,14 @@ namespace TlsClient.Manager
             Array.ConstrainedCopy(s_cOneArray, 15, scOne.ServerHello.Random_bytes, 0, 28);
             //取ServerHello中的Length
             Array.ConstrainedCopy(s_cOneArray, 6, scOne.ServerHello.Length, 0, 3);
-            //scOne.ServerHello.LengthValue = 
+            string lengthHEX = JinZhiHelper.DecimalTo2HEX(scOne.ServerHello.Length[0])
+                + JinZhiHelper.DecimalTo2HEX(scOne.ServerHello.Length[1])
+                + JinZhiHelper.DecimalTo2HEX(scOne.ServerHello.Length[2]);
+            scOne.ServerHello.LengthValue = Convert.ToInt32(lengthHEX, 16);
             //取Certificates中的公钥
-            Array.ConstrainedCopy(s_cOneArray, 5 + 4, scOne.ServerHello.Random_bytes, 0, 28);
-            //X509Certificate cert = new X509Certificate(
+            Array.ConstrainedCopy(s_cOneArray, 5 + 4 + scOne.ServerHello.LengthValue + 7, scOne.Certificate.Certificates, 0, 1412);
+            X509Certificate2 cert = new X509Certificate2(scOne.Certificate.Certificates);
+            scOne.Certificate.SubjectPublicKey = cert.GetPublicKey();
         }
     }
 }
