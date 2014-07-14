@@ -18,8 +18,8 @@ namespace TlsClient.Model
         private Base _changeCipherSpecBase = new Base();
         public Base ChangeCipherSpecBase { get { return _changeCipherSpecBase; } }
 
-        private byte[] _changeCipherSpecMessage = new byte[1];
-        public byte[] ChangeCipherSpecMessage
+        private byte _changeCipherSpecMessage;
+        public byte ChangeCipherSpecMessage
         {
             get { return _changeCipherSpecMessage; }
             set { _changeCipherSpecMessage = value; }

@@ -42,6 +42,8 @@ namespace TlsClient
             S_To_C_OneManager receiveManager = new S_To_C_OneManager();
             receiveManager.AnalysePackage(s_cOneArray);
 
+            requestManager = new C_To_S_TwoManager();
+            requestManager.InitPackage();
             ///http://tools.ietf.org/html/rfc5246#section-7.4.7
             ///http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html
             Console.ReadKey();
