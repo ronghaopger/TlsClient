@@ -29,8 +29,8 @@ namespace TlsClient.Manager
                 + JinZhiHelper.DecimalTo2HEX(scOne.ServerHello.Length[2]);
             scOne.ServerHello.LengthValue = Convert.ToInt32(lengthHEX, 16);
             //取Certificates中的公钥
-            Array.ConstrainedCopy(s_cOneArray, 5 + 4 + scOne.ServerHello.LengthValue + 7, scOne.Certificate.Certificates, 0, 1412);
-            X509Certificate2 cert = new X509Certificate2(scOne.Certificate.Certificates);
+            Array.ConstrainedCopy(s_cOneArray, 5 + 4 + scOne.ServerHello.LengthValue + 10, scOne.Certificate.Certificates, 0, 1409);
+            X509Certificate cert = new X509Certificate(scOne.Certificate.Certificates);
             scOne.Certificate.SubjectPublicKey = cert.GetPublicKey();
         }
     }

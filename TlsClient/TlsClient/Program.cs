@@ -35,7 +35,6 @@ namespace TlsClient
                 readContent = new byte[1024];
                 readLength = stream.Read(readContent, 0, readContent.Length);
                 contentStream.Write(readContent, 0, readLength);
-                contentStream.Seek(readLength,SeekOrigin.Current);
             }
             while (readLength == readContent.Length);
             byte[] s_cOneArray = contentStream.ToArray();

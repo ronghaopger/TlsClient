@@ -8,7 +8,7 @@ namespace TlsClient.Model.ProtocolModel
 {
     public class Certificate
     {
-        private byte[] _certificates = new byte[1412];
+        private byte[] _certificates = new byte[1409];
         public byte[] Certificates
         {
             get { return _certificates; }
