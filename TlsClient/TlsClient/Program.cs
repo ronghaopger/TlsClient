@@ -17,14 +17,13 @@ namespace TlsClient
         {
             IRequestManager requestManager = new C_To_S_OneManager();
             requestManager.InitPackage();
-            MemoryStream writeStream = requestManager.InitStream();
-            byte[] c_sOneArray = writeStream.ToArray();
+            App.C_SOneArray = requestManager.InitStream().ToArray();
             
             string serverAddr = "221.176.31.177";
             int portNum = 443;
             TcpClient client = new TcpClient(serverAddr, portNum);
             NetworkStream stream = client.GetStream();
-            stream.Write(c_sOneArray, 0, c_sOneArray.Length);
+            stream.Write(App.C_SOneArray, 0, App.C_SOneArray.Length);
 
             MemoryStream contentStream = new MemoryStream();
             stream.ReadTimeout = 3 * 1000;
@@ -37,13 +36,16 @@ namespace TlsClient
                 contentStream.Write(readContent, 0, readLength);
             }
             while (readLength == readContent.Length);
-            byte[] s_cOneArray = contentStream.ToArray();
+            App.S_COneArray = contentStream.ToArray();
 
             S_To_C_OneManager receiveManager = new S_To_C_OneManager();
-            receiveManager.AnalysePackage(s_cOneArray);
+            receiveManager.AnalysePackage(App.S_COneArray);
 
             requestManager = new C_To_S_TwoManager();
             requestManager.InitPackage();
+            App.C_STwoArray = requestManager.InitStream().ToArray();
+            stream.Write(App.C_STwoArray, 0, App.C_STwoArray.Length);
+
             ///http://tools.ietf.org/html/rfc5246#section-7.4.7
             ///http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html
             Console.ReadKey();

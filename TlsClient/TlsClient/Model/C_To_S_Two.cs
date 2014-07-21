@@ -28,11 +28,11 @@ namespace TlsClient.Model
         private Base _encryptedHandshakeMessageBase = new Base();
         public Base EncryptedHandshakeMessageBase { get { return _encryptedHandshakeMessageBase; } }
 
-        private byte[] _encryptedHandshakeMessage = new byte[32];
+        //private byte[] _encryptedHandshakeMessage = new byte[32];
         public byte[] EncryptedHandshakeMessage
         {
-            get { return _encryptedHandshakeMessage; }
-            set { _encryptedHandshakeMessage = value; }
+            get;
+            set;
         }
     }
 }

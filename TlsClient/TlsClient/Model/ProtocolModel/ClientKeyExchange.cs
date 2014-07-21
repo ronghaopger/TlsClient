@@ -15,11 +15,11 @@ namespace TlsClient.Model.ProtocolModel
             set { _encryptedPreMasterlength = value; }
         }
 
-        private byte[] _encryptedPreMaster = new byte[2];
+        //private byte[] _encryptedPreMaster = new byte[128];
         public byte[] EncryptedPreMaster
         {
-            get { return _encryptedPreMaster; }
-            set { _encryptedPreMaster = value; }
+            get;
+            set;
         }
     }
 }
