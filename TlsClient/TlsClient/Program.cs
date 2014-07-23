@@ -15,6 +15,7 @@ namespace TlsClient
     {
         static void Main(string[] args)
         {
+            //clienthello
             IRequestManager requestManager = new C_To_S_OneManager();
             requestManager.InitPackage();
             App.C_SOneArray = requestManager.InitStream().ToArray();
@@ -25,6 +26,7 @@ namespace TlsClient
             NetworkStream stream = client.GetStream();
             stream.Write(App.C_SOneArray, 0, App.C_SOneArray.Length);
 
+            //severhello,certificate,sever hello doone
             MemoryStream contentStream = new MemoryStream();
             stream.ReadTimeout = 3 * 1000;
             byte[] readContent;
@@ -41,10 +43,13 @@ namespace TlsClient
             S_To_C_OneManager receiveManager = new S_To_C_OneManager();
             receiveManager.AnalysePackage(App.S_COneArray);
 
+            //client key exchange,  change cipher spec
             requestManager = new C_To_S_TwoManager();
             requestManager.InitPackage();
             App.C_STwoArray = requestManager.InitStream().ToArray();
             stream.Write(App.C_STwoArray, 0, App.C_STwoArray.Length);
+
+            //finished
 
             ///http://tools.ietf.org/html/rfc5246#section-7.4.7
             ///http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html

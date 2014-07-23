@@ -41,26 +41,26 @@ namespace TlsClient.Manager
             csTwo.ChangeCipherSpecBase.Length[0] = 0;
             csTwo.ChangeCipherSpecBase.Length[1] = 1;
             csTwo.ChangeCipherSpecMessage = 1;
-            csTwo.EncryptedHandshakeMessageBase.ContentType = 22;
-            csTwo.EncryptedHandshakeMessageBase.Version[0] = 3;
-            csTwo.EncryptedHandshakeMessageBase.Version[1] = 1;
-            csTwo.EncryptedHandshakeMessageBase.Length[0] = 0;
-            csTwo.EncryptedHandshakeMessageBase.Length[1] = 32;
-            App.HandshakeMessage = new byte[App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5];
-            Array.Copy(App.C_SOneArray, 5, App.HandshakeMessage, 0, App.C_SOneArray.Length - 5);
-            Array.Copy(App.S_COneArray, 5, App.HandshakeMessage, App.C_SOneArray.Length - 5, App.S_COneArray.Length - 5);
+            //csTwo.EncryptedHandshakeMessageBase.ContentType = 22;
+            //csTwo.EncryptedHandshakeMessageBase.Version[0] = 3;
+            //csTwo.EncryptedHandshakeMessageBase.Version[1] = 1;
+            //csTwo.EncryptedHandshakeMessageBase.Length[0] = 0;
+            //csTwo.EncryptedHandshakeMessageBase.Length[1] = 32;
+            //App.HandshakeMessage = new byte[App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5];
+            //Array.Copy(App.C_SOneArray, 5, App.HandshakeMessage, 0, App.C_SOneArray.Length - 5);
+            //Array.Copy(App.S_COneArray, 5, App.HandshakeMessage, App.C_SOneArray.Length - 5, App.S_COneArray.Length - 5);
 
             //App.HandshakeMessage[App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5] = csTwo.ClientKeyExchange.HandshakeType;
             //Array.Copy(csTwo.ClientKeyExchange.Length, 0, App.HandshakeMessage, App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5 + 1, 3);
             //Array.Copy(csTwo.ClientKeyExchange.EncryptedPreMasterlength, 0, App.HandshakeMessage, App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5 + 4, 2);
             //Array.Copy(csTwo.ClientKeyExchange.EncryptedPreMaster, 0, App.HandshakeMessage, App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5 + 6, 128);
 
-            byte[] md5Hash = new MD5CryptoServiceProvider().ComputeHash(App.HandshakeMessage);
-            byte[] sha1Hash = new SHA1CryptoServiceProvider().ComputeHash(App.HandshakeMessage);
-            byte[] hash = new byte[md5Hash.Length + sha1Hash.Length];
-            md5Hash.CopyTo(hash, 0);
-            sha1Hash.CopyTo(hash, md5Hash.Length);
-            csTwo.EncryptedHandshakeMessage = hash;
+            //byte[] md5Hash = new MD5CryptoServiceProvider().ComputeHash(App.HandshakeMessage);
+            //byte[] sha1Hash = new SHA1CryptoServiceProvider().ComputeHash(App.HandshakeMessage);
+            //byte[] hash = new byte[md5Hash.Length + sha1Hash.Length];
+            //md5Hash.CopyTo(hash, 0);
+            //sha1Hash.CopyTo(hash, md5Hash.Length);
+            //csTwo.EncryptedHandshakeMessage = hash;
         }
 
         public MemoryStream InitStream()
@@ -79,10 +79,10 @@ namespace TlsClient.Manager
             stream.Write(csTwo.ChangeCipherSpecBase.Length, 0, 2);
             stream.WriteByte(csTwo.ChangeCipherSpecMessage);
 
-            stream.WriteByte(csTwo.EncryptedHandshakeMessageBase.ContentType);
-            stream.Write(csTwo.EncryptedHandshakeMessageBase.Version, 0, 2);
-            stream.Write(csTwo.EncryptedHandshakeMessageBase.Length, 0, 2);
-            stream.Write(csTwo.EncryptedHandshakeMessage, 0, 32);
+            //stream.WriteByte(csTwo.EncryptedHandshakeMessageBase.ContentType);
+            //stream.Write(csTwo.EncryptedHandshakeMessageBase.Version, 0, 2);
+            //stream.Write(csTwo.EncryptedHandshakeMessageBase.Length, 0, 2);
+            //stream.Write(csTwo.EncryptedHandshakeMessage, 0, 32);
             return stream;
         }
     }
