@@ -51,10 +51,10 @@ namespace TlsClient.Manager
             csTwo.ChangeCipherSpecBase.Length[0] = 0;
             csTwo.ChangeCipherSpecBase.Length[1] = 1;
             csTwo.ChangeCipherSpecMessage = 1;
+
             csTwo.EncryptedHandshakeMessageBase.ContentType = 22;
             csTwo.EncryptedHandshakeMessageBase.Version[0] = 3;
             csTwo.EncryptedHandshakeMessageBase.Version[1] = 1;
-
 
             App.HandshakeMessage = new byte[App.C_SOneArray.Length - 5 + App.S_COneArray.Length - 5 + 262];
             Array.Copy(App.C_SOneArray, 5, App.HandshakeMessage, 0, App.C_SOneArray.Length - 5);
@@ -78,11 +78,11 @@ namespace TlsClient.Manager
             clientFinishedHeaderBytes[2] = 0;
             clientFinishedHeaderBytes[3] = 12;
 
-            byte[] keyBlock = Prf10.GenerateBytes(App.MasterSecret, "key expansion", App.SeverHelloAndClientHelloRandom, 136);
-            byte[] client_write_MAC_secret = new byte[20];
-            byte[] client_write_key = new byte[32]; 
-            Buffer.BlockCopy(keyBlock, 0, client_write_MAC_secret, 0, 20);
-            Buffer.BlockCopy(keyBlock, 40, client_write_key, 0, 32);
+            byte[] keyBlock = Prf10.GenerateBytes(App.MasterSecret, "key expansion", App.SeverHelloAndClientHelloRandom, 66);
+            byte[] client_write_MAC_secret = new byte[16];
+            byte[] client_write_key = new byte[16]; 
+            Buffer.BlockCopy(keyBlock, 0, client_write_MAC_secret, 0, 16);
+            Buffer.BlockCopy(keyBlock, 32, client_write_key, 0, 16);
 
             var clientFinishedHash = Hasher.ComputeTlsMD5Hmac(client_write_MAC_secret, 0x16, 0, ByteUtilities.ConcatBytes(clientFinishedHeaderBytes, clientVerifyData));
             var clientFinishedDecrypted = ByteUtilities.ConcatBytes(clientFinishedHeaderBytes, clientVerifyData, clientFinishedHash);
