@@ -19,7 +19,7 @@ namespace TlsClient
             requestManager.InitPackage();
             App.C_SOneArray = requestManager.InitStream().ToArray();
             
-            string serverAddr = "221.176.31.177";
+            string serverAddr = "61.135.185.140";
             int portNum = 443;
             TcpClient client = new TcpClient(serverAddr, portNum);
             NetworkStream stream = client.GetStream();
@@ -31,7 +31,7 @@ namespace TlsClient
             int readLength = 0;
             do
             {
-                readContent = new byte[1024];
+                readContent = new byte[10240];
                 readLength = stream.Read(readContent, 0, readContent.Length);
                 contentStream.Write(readContent, 0, readLength);
             }
@@ -45,6 +45,10 @@ namespace TlsClient
             requestManager.InitPackage();
             App.C_STwoArray = requestManager.InitStream().ToArray();
             stream.Write(App.C_STwoArray, 0, App.C_STwoArray.Length);
+
+
+            //http://blog.jobbole.com/48369/
+
 
             ///http://tools.ietf.org/html/rfc5246#section-7.4.7
             ///http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html

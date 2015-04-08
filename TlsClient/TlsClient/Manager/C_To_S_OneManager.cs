@@ -37,6 +37,11 @@ namespace TlsClient.Manager
             csOne.ClientHello.Gmt_unix_time[0] = (byte)(seconds >> 24 & 0xFF);
             Random random = new Random();
             random.NextBytes(csOne.ClientHello.Random_bytes);
+            //构造ClientHello和ServerHello的Random数组
+            App.SeverHelloAndClientHelloRandom = new byte[56];
+            App.ClientHelloAndServerHelloRandom = new byte[56];
+            Array.Copy(csOne.ClientHello.Random_bytes, 0, App.SeverHelloAndClientHelloRandom, 28, 28);
+            Array.Copy(csOne.ClientHello.Random_bytes, App.ClientHelloAndServerHelloRandom, 28);
             csOne.ClientHello.SessionIDLength = 0;
             csOne.ClientHello.CipherSuitesLength[0] = 0;
             csOne.ClientHello.CipherSuitesLength[1] = 2;

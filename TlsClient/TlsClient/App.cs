@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,28 @@ namespace TlsClient
 {
     public class App
     {
+        public static PublicKey PublicKey
+        {
+            get;
+            set;
+        }
+        public static byte[] MasterSecret
+        {
+            get;
+            set;
+        }
+
+        public static byte[] SeverHelloAndClientHelloRandom
+        {
+            get;
+            set;
+        }
+        public static byte[] ClientHelloAndServerHelloRandom
+        {
+            get;
+            set;
+        }
+
         public static byte[] HandshakeMessage
         {
             get;

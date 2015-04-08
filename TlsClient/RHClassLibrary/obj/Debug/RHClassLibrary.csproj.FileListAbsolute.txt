@@ -17,3 +17,7 @@ E:\GitHub\TlsClient\TlsClient\RHClassLibrary\obj\Debug\RHClassLibrary.pdb
 E:\GitHub\TlsClient\TlsClient\RHClassLibrary\bin\Debug\RHClassLibrary.dll
 E:\GitHub\TlsClient\TlsClient\RHClassLibrary\bin\Debug\RHClassLibrary.pdb
 E:\GitHub\TlsClient\TlsClient\RHClassLibrary\obj\Debug\RHClassLibrary.csprojResolveAssemblyReference.cache
+Q:\GitHub\TlsClient\TlsClient\RHClassLibrary\bin\Debug\RHClassLibrary.dll
+Q:\GitHub\TlsClient\TlsClient\RHClassLibrary\bin\Debug\RHClassLibrary.pdb
+Q:\GitHub\TlsClient\TlsClient\RHClassLibrary\obj\Debug\RHClassLibrary.dll
+Q:\GitHub\TlsClient\TlsClient\RHClassLibrary\obj\Debug\RHClassLibrary.pdb

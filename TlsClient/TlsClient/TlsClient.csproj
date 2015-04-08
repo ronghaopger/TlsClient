@@ -41,22 +41,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
     <Compile Include="Manager\C_To_S_OneManager.cs" />
-    <Compile Include="Manager\IManager.cs" />
+    <Compile Include="Manager\C_To_S_TwoManager.cs" />
+    <Compile Include="Manager\IRequestManager.cs" />
     <Compile Include="Manager\S_To_C_OneManager.cs" />
     <Compile Include="Model\C_To_S_One.cs" />
+    <Compile Include="Model\C_To_S_Two.cs" />
     <Compile Include="Model\ProtocolModel\Base.cs" />
     <Compile Include="Model\ProtocolModel\Certificates.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\ec_point_formats.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\elliptic_curves.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\renegotiation_info.cs" />
     <Compile Include="Model\ProtocolModel\ClientHelloExtension\SessionTicketTLS.cs" />
+    <Compile Include="Model\ProtocolModel\ClientKeyExchange.cs" />
     <Compile Include="Model\ProtocolModel\ServerHello.cs" />
     <Compile Include="Model\S_To_C_One.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\ProtocolModel\ClientHello.cs" />
     <Compile Include="Model\ProtocolModel\Handshake.cs" />
+    <Compile Include="Utils\AES256.cs" />
+    <Compile Include="Utils\Arc4.cs" />
+    <Compile Include="Utils\ARCFourCryptoTransform.cs" />
+    <Compile Include="Utils\ByteUtilities.cs" />
+    <Compile Include="Utils\Hasher.cs" />
+    <Compile Include="Utils\Prf10.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -12,3 +12,11 @@ E:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.pdb
 E:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\RHClassLibrary.dll
 E:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\RHClassLibrary.pdb
 E:\GitHub\TlsClient\TlsClient\TlsClient\obj\Debug\TlsClient.csprojResolveAssemblyReference.cache
+Q:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.exe.config
+Q:\GitHub\TlsClient\TlsClient\TlsClient\obj\Debug\TlsClient.exe
+Q:\GitHub\TlsClient\TlsClient\TlsClient\obj\Debug\TlsClient.pdb
+Q:\GitHub\TlsClient\TlsClient\TlsClient\obj\Debug\TlsClient.csprojResolveAssemblyReference.cache
+Q:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.exe
+Q:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\TlsClient.pdb
+Q:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\RHClassLibrary.dll
+Q:\GitHub\TlsClient\TlsClient\TlsClient\bin\Debug\RHClassLibrary.pdb
